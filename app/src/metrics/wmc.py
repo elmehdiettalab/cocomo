@@ -1,13 +1,22 @@
 import ast
 from .astUtils import ClassNodeLister, FunctionNodeLister
 
+
+"""
+    class that weights the sum of complexity of all methods in the class.
+"""
 class WMC:
+    """
+        Constructor class that gets the file and store it then parse it.
+    """
     def __init__(self, filepath):
         self.file = filepath
         f = open(self.file)
         self.tree = ast.parse(f.read())
         f.close()
-
+    """
+        method that invokes on each class the method calculateOne that computes the sum of complexity
+    """
     def calculateAll(self, countInit = False):
         results = {}
         classLister = ClassNodeLister()
